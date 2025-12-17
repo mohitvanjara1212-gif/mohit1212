@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop | Mohit Sports Store</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-900 text-gray-200">
+<!-- HEADER -->
+<header class="bg-gray-800 shadow-lg sticky top-0 z-50">
+  <div class="container mx-auto px-5 py-4 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center space-x-2">
+      <svg width="36" height="36" viewBox="0 0 100 100"
+        class="bg-indigo-500 rounded-full p-2">
+        <rect x="45" y="15" width="10" height="50" rx="2" fill="white"/>
+        <circle cx="50" cy="75" r="8" fill="white"/>
+      </svg>
+      <span class="text-xl font-bold text-white">
+        Mohit <span class="text-indigo-400">Sports</span>
+      </span>
+    </a>
+
+    <!-- Nav -->
+    <nav class="hidden md:flex space-x-6">
+      <a href="index.html" class="hover:text-indigo-400">Home</a>
+      <a href="shop.html" class="text-indigo-400 font-semibold">Shop</a>
+      <a href="categories.html" class="hover:text-indigo-400">Categories</a>
+      <a href="signin.html" class="hover:text-indigo-400">Sign In</a>
+      
+    </nav>
+
+    <!-- Cart -->
+    <div class="relative">
+      <span class="absolute -top-2 -right-2 bg-indigo-500 text-xs px-2 rounded-full" id="cartCount">0</span>
+      🛒
+    </div>
+  </div>
+</header>
+<!-- HERO -->
+<section class="text-center py-16 bg-gradient-to-r from-indigo-600/20 to-purple-600/20">
+  <h1 class="text-4xl font-bold text-white mb-3">Shop Sports Gear</h1>
+  <p class="text-gray-300">Bats, sportswear, accessories & fitness essentials</p>
+</section>
+
+<!-- MAIN -->
+<div class="container mx-auto px-5 py-12 flex flex-col lg:flex-row gap-10">
+
+  <!-- FILTERS -->
+  <aside class="lg:w-1/4 bg-gray-800 rounded-xl p-6 h-fit">
+    <h2 class="text-xl font-semibold mb-4">Categories</h2>
+
+    <div class="space-y-3">
+      <button onclick="filterProducts('all')" class="filter-btn">All</button>
+      <button onclick="filterProducts('cricket')" class="filter-btn">Cricket</button>
+      <button onclick="filterProducts('football')" class="filter-btn">Football</button>
+      <button onclick="filterProducts('clothing')" class="filter-btn">Sportswear</button>
+      <button onclick="filterProducts('accessories')" class="filter-btn">Accessories</button>
+    </div>
+  </aside>
+
+  <!-- PRODUCTS -->
+  <main class="lg:w-3/4 grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="productList">
+
+    <!-- Product -->
+    <div class="product-card" data-category="cricket">
+     <center><img src="bat.jpg" class="product-img"></center>
+      <h3>English Willow Bat</h3>
+      <p>₹3,999</p>
+      <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product-card" data-category="football">
+     <center><img src="football.jpg" class="product-img"></center>
+      <h3>Match Football</h3>
+      <p>₹1,299</p>
+      <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product-card" data-category="clothing">
+     <center><img src="tshirt.jpg" class="product-img"></center>
+      <h3>Sports T-Shirt</h3>
+      <p>₹799</p>
+      <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product-card" data-category="accessories">
+      <center><img src="kit.jpg" class="product-img"></center>
+      <h3>Kit Bag</h3>
+      <p>₹1,499</p>
+      <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product-card" data-category="cricket">
+      <center><img src="gloves.jpg" class="product-img"></center>
+      <h3>Cricket Gloves</h3>
+      <p>₹899</p>
+      <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product-card" data-category="accessories">
+      <center><img src="ropes.jpg" class="product-img"></center>
+      <h3>Skipping Rope</h3>
+      <p>₹399</p>
+      <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-gray-800 py-6 text-center text-gray-400">
+  © 2025 Mohit Sports Store. All rights reserved.
+</footer>
+
+<!-- STYLES -->
+<style>
+  .product-card {
+    background: #1f2937;
+    padding: 1rem;
+    border-radius: 1rem;
+    transition: transform .3s, box-shadow .3s;
+  }
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(99,102,241,.3);
+  }
+  .product-img {
+    border-radius: .75rem;
+    margin-bottom: 1rem;
+  }
+  .product-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  .product-card p {
+    color: #a5b4fc;
+    margin: .5rem 0;
+  }
+  .product-card button {
+    background: #6366f1;
+    width: 100%;
+    padding: .6rem;
+    border-radius: .5rem;
+    font-weight: 600;
+  }
+  .product-card button:hover {
+    background: #4f46e5;
+  }
+  .filter-btn {
+    width: 100%;
+    padding: .6rem;
+    background: #111827;
+    border-radius: .5rem;
+    transition: .3s;
+  }
+  .filter-btn:hover {
+    background: #6366f1;
+  }
+</style>
+
+<!-- SCRIPT -->
+<script>
+  let cart = 0;
+
+  function addToCart() {
+    cart++;
+    document.getElementById("cartCount").innerText = cart;
+  }
+
+  function filterProducts(category) {
+    const products = document.querySelectorAll(".product-card");
+    products.forEach(product => {
+      if (category === "all" || product.dataset.category === category) {
+        product.style.display = "block";
+      } else {
+        product.style.display = "none";
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
